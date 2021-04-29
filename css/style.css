@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+body, 
+body *{
+	box-sizing: border-box;/*deze is handig omdat anders de padding en border van een element worden opgeteld bij de breedte van het element. Is een elemennt bv 100px breed, 10px padding en 10px  border, dan neemt het element 120px in, tenzij je de box-sizing op content-box zet.*/
+}
+
+.container {
+	display: flex; /*als de display flex is (wow...chill) dan is alles binnen dit element flexibel in te delen*/
+	flex-direction: row; /*hier staat dat de richting van de elementen horizontaal is. Dus alles in principe naast elkaar*/
+	flex-wrap: wrap; /*hier staat dat de elementen wel onder elkaar mogen als het niet past naast elkaar. Zet je nowrap, dan krijg je, als het niet past, een horizontale scrollbar*/
+	justify-content: space-between
+}
+
+/* Blokken naast elkaar zetten*/
+.blok{
+	flex-grow: 0; /*groter mag wel=1, groter mag niet=0*/
+	flex-shrink: 1; /*kleiner mag wel=1, kleiner mag niet=0*/
+	flex-basis: auto; /*dit is de breedte van de formulier containers. 50% is dus de helft van de pagina*/
+}
+
+/* Radio bullet verbergen, want die is lelijk*/
+input[name='kies_blok'] {
+	opacity: 0;/*0=onzichtbaar, 1=volledig zichtbaar. Je kunt ook opacity: 0.5; zetten bijvoorbeeld voor half transparant*/
+	width: 0;
+	height: 0;
+}
+/* Dit is de motor achter het verbergen en tonen van de 2 blokken ********************************/
+/* .blok_binnen is verborgen als je nog nergens op hebt geklikt*/
+input[name='kies_blok'] ~  .blok_binnen {
+	opacity: 0; /*verbergen*/
+	height: 0;
+	max-height: 0;
+	padding: 1em 40px;
+	background-color: #e0e0e0;
+}
+/* Bij klik op de radio button .blok_binnen tonen*/
+input[name='kies_blok']:checked ~ .blok_binnen {
+	opacity: 1;/*tonen*/
+	height: auto;
+	max-height: 100%;
+	transition: all 0.3s ease-out;/*animatie van 0.3seconden voor alle css declaraties*/
+	background-color: black; 
+	color: white;
+}
+
+/****************************************************************/
+/*algemene opmaak*/
+/****************************************************************/
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+} 
+
+h2.knop {
+	cursor: pointer;
+	width: 100%;
+	margin-bottom: 0;
+}
+h2.knop::after{
+	content: '';
+	height:2px;
+	width: 0%;
+	background-color: black;
+	display: block;
+	color: white;
+} 
+h2.knop:hover,
+input[name='kies_blok']:checked + label h2.knop {
+	color: orange;
+}
+h2.knop:hover:after,
+input[name='kies_blok']:checked + label h2.knop:after{
+	width:100%;
+	transition: all 0.3s ease-out;/*animatie van 0.3seconden voor alle css declaraties*/
+} 
