@@ -2,7 +2,7 @@
 
 body, 
 body *{
-	box-sizing: border-box;/*deze is handig omdat anders de padding en border van een element worden opgeteld bij de breedte van het element. Is een elemennt bv 100px breed, 10px padding en 10px  border, dan neemt het element 120px in, tenzij je de box-sizing op content-box zet.*/
+	box-sizing: border-box; /*deze is handig omdat anders de padding en border van een element worden opgeteld bij de breedte van het element. Is een elemennt bv 100px breed, 10px padding en 10px  border, dan neemt het element 120px in, tenzij je de box-sizing op content-box zet.*/
 }
 
 .container {
@@ -14,9 +14,9 @@ body *{
 
 /* Blokken naast elkaar zetten*/
 .blok{
-	flex-grow: 0; /*groter mag wel=1, groter mag niet=0*/
+	flex-grow: 1; /*groter mag wel=1, groter mag niet=0*/
 	flex-shrink: 1; /*kleiner mag wel=1, kleiner mag niet=0*/
-	flex-basis: auto; /*dit is de breedte van de formulier containers. 50% is dus de helft van de pagina*/
+	flex-basis: auto; /*dit is de breedte van de blokken, die staat auto, wat betekent dat de breedte zich aanpast aan wat*/
 }
 
 /* Radio bullet verbergen, want die is lelijk*/
@@ -36,7 +36,7 @@ input[name='kies_blok'] ~  .blok_binnen {
 }
 /* Bij klik op de radio button .blok_binnen tonen*/
 input[name='kies_blok']:checked ~ .blok_binnen {
-	opacity: 1;/*tonen*/
+	opacity: 1;/*zichtbaar = 1*/
 	height: auto;
 	max-height: 100%;
 	transition: all 0.3s ease-out;/*animatie van 0.3seconden voor alle css declaraties*/
