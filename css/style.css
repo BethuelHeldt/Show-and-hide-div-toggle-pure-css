@@ -29,6 +29,7 @@ input[name='kies_blok'] {
 /* .blok_binnen is verborgen als je nog nergens op hebt geklikt*/
 input[name='kies_blok'] ~  .blok_binnen {
 	opacity: 0; /*verbergen*/
+	pointer-events: none; /*je muis moet niet op elementen  kunnen klikken als ze verborgen zijn*/
 	height: 0;
 	max-height: 0;
 	padding: 1em 40px;
@@ -37,6 +38,7 @@ input[name='kies_blok'] ~  .blok_binnen {
 /* Bij klik op de radio button .blok_binnen tonen*/
 input[name='kies_blok']:checked ~ .blok_binnen {
 	opacity: 1;/*zichtbaar = 1*/
+	pointer-events: auto; /*Maar als ze niet verborgen zijn moet je er wel op kunnen klikken*/
 	height: auto;
 	max-height: 100%;
 	transition: all 0.3s ease-out;/*animatie van 0.3seconden voor alle css declaraties*/
